@@ -23,26 +23,6 @@ export class AuthService {
       .map(res => res.json());
   }
 
-// authenticate User Lunch Routes
-  authLunch(){
-    let headers = new Headers();
-    this.loadToken();
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/api/authLunch',{headers:headers})
-      .map(res => res.json());
-  }
-
-// authenticate User Client Routes
-  authClient(){
-    let headers = new Headers();
-    this.loadToken();
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/api/authClient',{headers:headers})
-      .map(res => res.json());
-  }
-
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;
@@ -71,6 +51,26 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+// authenticate User Lunch Routes
+  authLunch(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/authLunch',{headers:headers})
+      .map(res => res.json());
+  }
+
+// authenticate User Client Routes
+  authClient(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/authClient',{headers:headers})
+      .map(res => res.json());
   }
 
 }

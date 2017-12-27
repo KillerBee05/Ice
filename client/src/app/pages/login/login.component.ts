@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
       public settings: SettingsService,
       private authService: AuthService,
       private router: Router,
-      // private validationService: ValidationService,
       formBuilder: FormBuilder
     ) {
 
